@@ -1,3 +1,24 @@
 name: Service A - Microservices
 server:
   port: ${PORT:5000}
+
+spring:
+  data:
+    rest:
+      base-path: /api/v1
+
+management:
+  context-path: /management
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    enabled: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://service-registry:8761/eureka/
+
+ribbon:
+  eureka:
+    enabled: true

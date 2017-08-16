@@ -8,3 +8,21 @@ hystrix:
       execution:
         isolation:
           strategy: SEMAPHORE
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    enabled: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://service-registry:8761/eureka/
+
+ribbon:
+  eureka:
+    enabled: true
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG

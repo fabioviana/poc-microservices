@@ -1,3 +1,12 @@
 name: Eureka Service Registry
 server:
   port: ${PORT:8761}
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

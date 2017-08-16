@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 
 import io.fabioviana.microservices.api.svcb.model.SocialProfile;
 
-@RepositoryRestResource(path = "/api/v1/socialprofile")
+@RepositoryRestResource
 public interface SocialProfileRepository extends JpaRepository<SocialProfile, Long> {
 	@RestResource(path = "by-name")
 	Collection<SocialProfile> findByName(@Param("name") String name);

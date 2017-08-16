@@ -3,15 +3,4 @@ spring:
     name: api-svcb-service
   cloud:
     config:
-      uri: http://localhost:8888
-
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${random.int}
-  client:
-    enabled: true
-    registerWithEureka: true
-
-ribbon:
-  eureka:
-    enabled: true
+      uri: http://config-service:8888

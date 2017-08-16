@@ -3,21 +3,4 @@ spring:
     name: api-svca-service
   cloud:
     config:
-      uri: http://localhost:8888
-  data:
-    rest:
-      base-path: /api/v1
-
-management:
-  context-path: /management
-
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${random.int}
-  client:
-    enabled: true
-    registerWithEureka: true
-
-ribbon:
-  eureka:
-    enabled: true
+      uri: http://config-service:8888
