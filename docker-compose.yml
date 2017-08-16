@@ -1,0 +1,30 @@
+version: '2'
+services:
+    config-service:
+        image: api-infra/config-service:0.0.1-SNAPSHOT
+        ports:
+            - "8888:8888"
+    service-registry:
+        image: api-infra/service-registry:0.0.1-SNAPSHOT
+        ports:
+            - "8761:8761"
+        depends_on:
+            - config-service
+    hystrix-dashboard:
+        image: api-infra/hystrix-dashboard:0.0.1-SNAPSHOT
+        ports:
+            - "8010:8010"
+    apigateway-service:
+        image: apigateway-service:0.0.1-SNAPSHOT
+        ports:
+            - "9000:9000"
+        depends_on:
+            - service-registry
+    api-svca-service:
+        image: api-svca-service:0.0.1-SNAPSHOT
+        depends_on:
+            - service-registry
+    api-svcb-service:
+        image: api-svcb-service:0.0.1-SNAPSHOT
+        depends_on:
+            - service-registry
