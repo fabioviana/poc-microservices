@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: service-registry
+  cloud:
+    config:
+      uri: http://localhost:8888
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

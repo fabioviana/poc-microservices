@@ -1,0 +1,3 @@
+name: Service A - Microservices
+server:
+  port: ${PORT:5000}

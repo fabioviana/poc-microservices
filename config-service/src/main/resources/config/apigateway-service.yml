@@ -1,0 +1,10 @@
+name: Zuul Api Gateway Service
+server:
+  port: ${PORT:9000}
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE

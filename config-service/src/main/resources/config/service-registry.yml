@@ -1,0 +1,3 @@
+name: Eureka Service Registry
+server:
+  port: ${PORT:8761}
