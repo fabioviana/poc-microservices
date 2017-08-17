@@ -20,8 +20,8 @@ services:
     command: /scripts/wait-for-it.sh http://config-server:8888/health 30 java -jar /home/app.jar
     volumes:
       - ./wait-for-it.sh:/scripts/wait-for-it.sh:z
-  apigateway-service:
-    image: apigateway-service:0.0.1-SNAPSHOT
+  apigateway:
+    image: apigateway:0.0.1-SNAPSHOT
     ports:
       - "9000:9000"
     depends_on:

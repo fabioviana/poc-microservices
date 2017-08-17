@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.fabioviana.microservices</groupId>
-	<artifactId>apigateway-service</artifactId>
+	<artifactId>apigateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>apigateway-service</name>
+	<name>apigateway</name>
 	<description>API Gateway service with Netflix Zuul</description>
 
 	<parent>

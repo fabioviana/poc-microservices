@@ -15,7 +15,7 @@
 		<module>config-server</module>
 		<module>service-registry</module>
 		<module>hystrix-dashboard</module>
-		<module>apigateway-service</module>
+		<module>apigateway</module>
 		<module>api-svca-service</module>
 		<module>api-svcb-service</module>
 	</modules>
