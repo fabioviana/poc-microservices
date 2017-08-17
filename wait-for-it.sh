@@ -3,7 +3,7 @@
 c=0
 while :
 do
-    curl -s $1
+    curl -s $1 &>/dev/null
     if [[ $? -eq 0 ]]; then
     	echo $1 ready
     	break
