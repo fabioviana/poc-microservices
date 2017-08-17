@@ -1,7 +1,7 @@
 version: '3'
 services:
-  config-service:
-    image: api-infra/config-service:0.0.1-SNAPSHOT
+  config-server:
+    image: api-infra/config-server:0.0.1-SNAPSHOT
     ports:
       - "8888:8888"
   service-registry:
@@ -9,15 +9,15 @@ services:
     ports:
       - "8761:8761"
     depends_on:
-      - config-service
-    command: /scripts/wait-for-it.sh http://config-service:8888/health 30 java -Dspring.profiles.active=native -jar /home/app.jar
+      - config-server
+    command: /scripts/wait-for-it.sh http://config-server:8888/health 30 java -jar /home/app.jar
     volumes:
       - ./wait-for-it.sh:/scripts/wait-for-it.sh:z
   hystrix-dashboard:
     image: api-infra/hystrix-dashboard:0.0.1-SNAPSHOT
     ports:
       - "8010:8010"
-    command: /scripts/wait-for-it.sh http://config-service:8888/health 30 java -Dspring.profiles.active=native -jar /home/app.jar
+    command: /scripts/wait-for-it.sh http://config-server:8888/health 30 java -jar /home/app.jar
     volumes:
       - ./wait-for-it.sh:/scripts/wait-for-it.sh:z
   apigateway-service:
@@ -26,20 +26,20 @@ services:
       - "9000:9000"
     depends_on:
       - service-registry
-    command: /scripts/wait-for-it.sh http://service-registry:8761/health 30 java -Dspring.profiles.active=native -jar /home/app.jar
+    command: /scripts/wait-for-it.sh http://service-registry:8761/health 30 java -jar /home/app.jar
     volumes:
       - ./wait-for-it.sh:/scripts/wait-for-it.sh:z
   api-svca-service:
     image: api-svca-service:0.0.1-SNAPSHOT
     depends_on:
       - service-registry
-    command: /scripts/wait-for-it.sh http://service-registry:8761/health 30 java -Dspring.profiles.active=native -jar /home/app.jar
+    command: /scripts/wait-for-it.sh http://service-registry:8761/health 30 java -jar /home/app.jar
     volumes:
       - ./wait-for-it.sh:/scripts/wait-for-it.sh:z
   api-svcb-service:
     image: api-svcb-service:0.0.1-SNAPSHOT
     depends_on:
       - service-registry
-    command: /scripts/wait-for-it.sh http://service-registry:8761/health 30 java -Dspring.profiles.active=native -jar /home/app.jar
+    command: /scripts/wait-for-it.sh http://service-registry:8761/health 30 java -jar /home/app.jar
     volumes:
       - ./wait-for-it.sh:/scripts/wait-for-it.sh:z

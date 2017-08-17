@@ -1,3 +1,0 @@
-name: Hystrix Dashboard
-server:
-  port: ${PORT:8010}

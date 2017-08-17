@@ -4,4 +4,4 @@ COPY ./target/*.jar /home/app.jar
 
 EXPOSE 8888
 
-CMD ["java", "-Dspring.profiles.active=native", "-jar", "/home/app.jar"]
+CMD ["java", "-jar", "/home/app.jar"]

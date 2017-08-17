@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = DEFINED_PORT)
-public class ConfigServiceApplicationTests {
+public class ConfigServerApplicationTests {
 
 	@Autowired
 	private TestRestTemplate testRestTemplate;

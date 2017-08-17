@@ -7,4 +7,4 @@ EXPOSE 8761
 RUN apk add --update curl && \
     rm -rf /var/cache/apk/*
 
-CMD ["java", "-Dspring.profiles.active=native", "-jar", "/home/app.jar"]
+CMD ["java", "-jar", "/home/app.jar"]
