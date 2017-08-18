@@ -30,6 +30,4 @@ $ docker-compose up
 - Config Server: http://localhost:8888/{app_name}/master
 - Service Discovery (Netflix Eureka): http://localhost:8761
 - Hystrix Dashboard: http://localhost:8010
-- API Gateway Hystrix Stream: http://localhost:9000/hystrix.stream
-- Svc A Hystrix Stream: http://localhost:9000/api-svca-service/hystrix.stream
-- Svc B Hystrix Stream: http://localhost:9000/api-svcb-service/hystrix.stream
+- Turbine Hystrix Stream: http://localhost:8010/turbine.stream

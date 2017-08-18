@@ -13,8 +13,8 @@
 
 	<modules>
 		<module>config-server</module>
-		<module>service-registry</module>
-		<module>hystrix-dashboard</module>
+		<module>service-discovery</module>
+		<module>turbine-hystrix-dashboard</module>
 		<module>apigateway</module>
 		<module>api-svca-service</module>
 		<module>api-svcb-service</module>

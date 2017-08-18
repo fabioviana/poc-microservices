@@ -24,7 +24,7 @@ public class ConfigServerApplicationTests {
 	@Test
 	public void contextLoads() {
 		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = testRestTemplate.getForEntity("/service-registry/master", Map.class);
+		ResponseEntity<Map> entity = testRestTemplate.getForEntity("/service-discovery/master", Map.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
 	}
 }

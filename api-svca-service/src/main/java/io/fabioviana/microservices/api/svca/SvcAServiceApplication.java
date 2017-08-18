@@ -6,7 +6,6 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
@@ -18,7 +17,6 @@ import org.springframework.data.rest.webmvc.BasePathAwareController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.google.common.base.Predicates;
-import com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet;
 
 import feign.Feign;
 import feign.hystrix.HystrixFeign;
@@ -53,22 +51,13 @@ public class SvcAServiceApplication {
 		return HystrixFeign.builder();
 	}
 
-	@Bean(name = "hystrixRegistrationBean")
-	public ServletRegistrationBean servletRegistrationBean() {
-		ServletRegistrationBean registration = new ServletRegistrationBean(new HystrixMetricsStreamServlet(),
-				"/hystrix.stream");
-		registration.setName("hystrixServlet");
-		registration.setLoadOnStartup(1);
-		return registration;
-	}
-
 	@Bean
-	public Docket latestDocumentationPlugin(@Value("${name}") String serviceName) {
+	public Docket v2DocumentationPlugin(@Value("${name}") String serviceName) {
 		return new VersionedDocket(serviceName, "v2");
 	}
 
 	@Bean
-	public Docket v10DocumentationPlugin(@Value("${name}") String serviceName) {
+	public Docket v1DocumentationPlugin(@Value("${name}") String serviceName) {
 		return new VersionedDocket(serviceName, "v1");
 	}
 

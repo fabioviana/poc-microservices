@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = DEFINED_PORT)
-public class HystrixDashboardApplicationTests {
+public class TurbineHystrixDashboardApplicationTests {
 
 	@Autowired
 	private TestRestTemplate testRestTemplate;
@@ -24,7 +24,7 @@ public class HystrixDashboardApplicationTests {
 	@Test
 	public void contextLoads() {
 		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = testRestTemplate.getForEntity("/", Map.class);
+		ResponseEntity<Map> entity = testRestTemplate.getForEntity("/health", Map.class);
 		assertEquals(HttpStatus.OK, entity.getStatusCode());
 	}
 }

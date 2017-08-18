@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.fabioviana.microservices</groupId>
-    <artifactId>service-registry</artifactId>
+    <artifactId>service-discovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>service-registry</name>
-    <description>Eureka Service Registry</description>
+    <name>service-discovery</name>
+    <description>Eureka Service Discovery</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
