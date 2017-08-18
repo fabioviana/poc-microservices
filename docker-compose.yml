@@ -16,7 +16,7 @@ services:
   apigateway:
     image: apigateway:0.0.1-SNAPSHOT
     ports:
-      - "9000:9000"
+      - "80:80"
     depends_on:
       - service-discovery
     command: /scripts/wait-for-it.sh http://service-discovery:8761/health 30 java -jar /home/app.jar
@@ -39,7 +39,7 @@ services:
   turbine-hystrix-dashboard:
     image: api-infra/turbine-hystrix-dashboard:0.0.1-SNAPSHOT
     ports:
-      - 8010:8010
+      - 8080:8080
     command: /scripts/wait-for-it.sh http://service-discovery:8761/health 30 java -jar /home/app.jar
     volumes:
       - ./wait-for-it.sh:/scripts/wait-for-it.sh:z

@@ -7,10 +7,8 @@ import java.util.stream.Collectors;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerInitializedEvent;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.HttpMethod;
@@ -28,16 +26,9 @@ import io.fabioviana.microservices.apigateway.socialprofile.model.SocialProfile;
 @RefreshScope
 @RestController
 @RequestMapping("/api/v1/socialProfiles")
-public class SocialProfileProxyController implements ApplicationListener<EmbeddedServletContainerInitializedEvent> {
+public class SocialProfileProxyController {
 	private static final String SERVICE_A = "api-svca-service";
 	private static final String SERVICE_B = "api-svcb-service";
-
-	private static int PORT;
-
-	@Override
-	public void onApplicationEvent(EmbeddedServletContainerInitializedEvent event) {
-		PORT = event.getEmbeddedServletContainer().getPort();
-	}
 
 	private SocialProfileProxyController self;
 
@@ -59,7 +50,7 @@ public class SocialProfileProxyController implements ApplicationListener<Embedde
 		};
 
 		ResponseEntity<Resources<SocialProfile>> profiles = restTemplate.exchange(
-				"http://localhost:" + PORT + "/" + service + "/api/v1/socialProfiles", HttpMethod.GET, null, typeReference);
+				"http://" + service + "/api/v1/socialProfiles", HttpMethod.GET, null, typeReference);
 
 		return profiles.getBody().getContent().stream().map(SocialProfile::getName).collect(Collectors.toList());
 	}

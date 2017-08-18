@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.rest.webmvc.BasePathAwareController;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.google.common.base.Predicates;
@@ -44,6 +45,16 @@ public class SvcBServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SvcBServiceApplication.class, args);
+	}
+
+	@Bean
+	public CommonsRequestLoggingFilter requestLoggingFilter() {
+		CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
+		loggingFilter.setIncludeClientInfo(true);
+		loggingFilter.setIncludeQueryString(true);
+		loggingFilter.setIncludePayload(true);
+		loggingFilter.setIncludeHeaders(true);
+		return loggingFilter;
 	}
 
 	@Bean
